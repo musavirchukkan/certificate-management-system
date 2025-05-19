@@ -10,7 +10,6 @@ A comprehensive Node.js application for generating, issuing, and validating digi
 - PostgreSQL database integration for certificate storage
 - RESTful API for programmatic access
 - Browser-based user interface
-- Command-line interface
 - Demonstration mode to showcase certificate expiration
 
 ## Prerequisites
@@ -22,17 +21,20 @@ A comprehensive Node.js application for generating, issuing, and validating digi
 ## Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/musavirchukkan/certificate-management-system.git
    cd certificate-management-system
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
 
 3. Create a `.env` file in the root directory with the following configuration:
+
    ```
    # Database Configuration
    DB_HOST=localhost
@@ -48,11 +50,13 @@ A comprehensive Node.js application for generating, issuing, and validating digi
    ```
 
 4. Set up the PostgreSQL database:
+
    ```bash
    psql -U postgres -c "CREATE DATABASE certificate_system;"
    ```
 
 5. Initialize the database tables:
+
    ```sql
    CREATE TABLE key_pairs (
      id SERIAL PRIMARY KEY,
@@ -91,13 +95,14 @@ npm run demo
 ```
 
 The demonstration will:
+
 1. Generate a new key pair
 2. Issue three certificates with different validity periods (1, 3, and 10 minutes)
 3. Validate all certificates immediately
 4. Wait 2 minutes and validate again (1-minute certificate should expire)
 5. Wait 2 more minutes and validate again (3-minute certificate should expire)
 
-### Command Line Interface
+<!-- ### Command Line Interface
 
 The CLI provides quick access to the core functionality:
 
@@ -116,11 +121,12 @@ npm run cli validate [certificate_path] [public_key_path]
 
 # Validate by subject
 npm run cli validate-subject example.com
-```
+``` -->
 
 ## API Endpoints
 
 The system provides a RESTful API:
+use:certificate-managment.postman_collection.json
 
 ### Key Pairs
 
@@ -129,6 +135,7 @@ The system provides a RESTful API:
 ### Certificates
 
 - `POST /api/certificates` - Issue a new certificate
+
   ```json
   {
     "subject": "example.com",
@@ -140,6 +147,7 @@ The system provides a RESTful API:
 - `GET /api/certificates` - List all certificates
 
 - `POST /api/certificates/validate` - Validate a certificate
+
   ```json
   {
     "certificatePath": "/path/to/certificate.json",
@@ -203,8 +211,10 @@ certificate-management-system/
 │   ├── public/         # Static files (HTML, CSS, JS)
 │   ├── routes/         # API routes
 │   ├── services/       # Business logic
-│   ├── utils/          # Utility functions
-│   └── cli.js          # Command line interface
+│   └── utils/          # Utility functions
+
+<!-- │   ├── utils/          # Utility functions -->
+<!-- │   └── cli.js          # Command line interface -->
 ├── keys/               # Storage for key pairs
 ├── certificates/       # Storage for certificates
 ├── .env                # Environment variables
@@ -212,9 +222,9 @@ certificate-management-system/
 └── package.json        # Project metadata
 ```
 
-## Contributing
+<!-- ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please feel free to submit a Pull Request. -->
 
 ## License
 

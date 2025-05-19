@@ -3,13 +3,8 @@ const fs = require('fs');
 const path = require('path');
 require('dotenv').config();
 const { helmet, apiLimiter } = require('./src/middleware/security');
-
-
 const certificateRoutes = require('./src/routes/certificateRoutes');
-
 const certificateService = require('./src/services/certificateService');
-
-
 
 const app = express();
 app.use(express.json());
@@ -24,11 +19,6 @@ app.use('/api', certificateRoutes);
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'src/public/index.html'));
 });
-
-
-
-
-
 
 // Start the server
 const PORT = process.env.PORT || 3000;

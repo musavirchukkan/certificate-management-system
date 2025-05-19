@@ -1,4 +1,3 @@
-// src/utils/cryptoUtils.js
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
@@ -21,10 +20,6 @@ function formatDate(date) {
     return date.toISOString().replace(/[:.]/g, '-');
 }
 
-/**
- * Generate a new public/private key pair
- * @returns {Object} Object containing the key pair information
- */
 function generateKeyPair() {
     console.log('Generating new key pair...');
 
@@ -61,12 +56,6 @@ function generateKeyPair() {
     };
 }
 
-/**
- * Sign data with a private key
- * @param {Object} data - Data to sign
- * @param {string} privateKey - Private key in PEM format
- * @returns {string} - Base64 encoded signature
- */
 function signData(data, privateKey) {
     const dataString = JSON.stringify(data);
     const signer = crypto.createSign('SHA256');
@@ -75,13 +64,6 @@ function signData(data, privateKey) {
     return signer.sign(privateKey, 'base64');
 }
 
-/**
- * Verify signature with a public key
- * @param {Object} data - Data that was signed
- * @param {string} signature - Base64 encoded signature
- * @param {string} publicKey - Public key in PEM format
- * @returns {boolean} - Whether the signature is valid
- */
 function verifySignature(data, signature, publicKey) {
     const dataString = JSON.stringify(data);
     const verifier = crypto.createVerify('SHA256');

@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "ecd65f7e-fbff-4c80-97fa-004e44d9d609",
+		"name": "certificate-managment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25285363"
+	},
+	"item": [
+		{
+			"name": "Generate a new key pair",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/key-pairs",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"key-pairs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Issue a new certificate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"subject\": \"musavir\",\n    \"privateKeyPath\": \"keys/private_key_2025-05-19T07-53-28-909Z.pem\",\n    \"validityMinutes\": 10\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/certificates",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"certificates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List all certificates",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/certificates",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"certificates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate a certificate",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"certificatePath\": \"certificates/cert_examplekey.com_2025-05-19T08-04-03-787Z.json\",\n    \"publicKeyPath\": \"keys/public_key_2025-05-19T07-53-28-909Z.pem\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/certificates/validate",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"certificates",
+						"validate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate a certificate by subject",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/certificates/validate/:subject",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"certificates",
+						"validate",
+						":subject"
+					],
+					"variable": [
+						{
+							"key": "subject",
+							"value": "example.com"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
